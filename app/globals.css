@@ -1,0 +1,118 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+
+/*
+  GLOW HAVEN DESIGN SYSTEM
+  These CSS variables are our brand colors. Tailwind turns each
+  "--color-*" below into utility classes, e.g. bg-primary, text-accent.
+  Change a color here and it updates across the whole website.
+*/
+
+@theme inline {
+  --font-sans: var(--font-jost), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-cormorant), ui-serif, Georgia, serif;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-success: var(--success);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+:root {
+  color-scheme: light;
+  /* Warm cream page background */
+  --background: #fbf7f3;
+  /* Deep plum-brown text: softer than pure black, still very readable */
+  --foreground: #3a2a2e;
+  --card: #ffffff;
+  --card-foreground: #3a2a2e;
+  --popover: #ffffff;
+  --popover-foreground: #3a2a2e;
+  /* Muted rose: main buttons and links */
+  --primary: #9e4f62;
+  --primary-foreground: #ffffff;
+  /* Soft blush pink: gentle section backgrounds */
+  --secondary: #f5e4e3;
+  --secondary-foreground: #3a2a2e;
+  --muted: #f3ece6;
+  --muted-foreground: #75605f;
+  /* Champagne gold: small decorative accents */
+  --accent: #c4a06a;
+  --accent-foreground: #3a2a2e;
+  --destructive: #b42318;
+  --success: #3f7d58;
+  --border: #eadbd3;
+  --input: #e2d1c8;
+  --ring: #9e4f62;
+  --radius: 0.875rem;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+  h1,
+  h2,
+  h3 {
+    @apply font-serif;
+  }
+  /* A visible focus ring for keyboard users on every interactive element */
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible {
+    @apply outline-2 outline-offset-2 outline-ring;
+  }
+  /* Native <dialog> backdrop used by the cart drawer and product modal */
+  dialog::backdrop {
+    background: rgb(58 42 46 / 0.45);
+    backdrop-filter: blur(2px);
+  }
+}
+
+/* Reusable button styles so every button on the site looks consistent */
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-primary px-7 py-3 text-sm font-medium tracking-wide text-primary-foreground shadow-sm transition hover:bg-primary/90 hover:shadow-md disabled:cursor-not-allowed disabled:opacity-60;
+  }
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-foreground/20 bg-transparent px-7 py-3 text-sm font-medium tracking-wide text-foreground transition hover:border-primary hover:text-primary;
+  }
+  .eyebrow {
+    @apply text-xs font-medium uppercase tracking-[0.25em] text-primary;
+  }
+  .input-field {
+    @apply w-full rounded-xl border border-input bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/70 transition focus:border-primary;
+  }
+}
